@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop - GGS Boys</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <div class="navbar-content">
+                    <div class="logo">
+                        <a href="index.html">
+                            <i class="fas fa-crown"></i> GGS BOYS
+                        </a>
+                    </div>
+                    <div class="nav-menu">
+                        <a href="index.html" class="nav-link">Home</a>
+                        <a href="shop.html" class="nav-link active">Shop</a>
+                    </div>
+                    <div class="nav-actions">
+                        <a href="cart.html" class="nav-icon" id="cart-icon" title="Shopping Cart">
+                            <i class="fas fa-shopping-bag"></i>
+                            <span class="cart-count">0</span>
+                        </a>
+                        <button class="hamburger" id="hamburger">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Shop Page Content -->
+    <main class="shop-main">
+        <div class="shop-container">
+            <!-- Sidebar Filters -->
+            <aside class="shop-sidebar">
+                <div class="filter-section">
+                    <h3>Filters</h3>
+                    
+                    <div class="filter-group">
+                        <h4>Category</h4>
+                        <label><input type="checkbox" data-filter="category" value="shirts"> Shirts</label>
+                        <label><input type="checkbox" data-filter="category" value="pants"> Pants</label>
+                        <label><input type="checkbox" data-filter="category" value="jackets"> Jackets</label>
+                        <label><input type="checkbox" data-filter="category" value="shoes"> Shoes</label>
+                        <label><input type="checkbox" data-filter="category" value="accessories"> Accessories</label>
+                        <label><input type="checkbox" data-filter="category" value="watches"> Watches</label>
+                    </div>
+
+                    <div class="filter-group">
+                        <h4>Price Range</h4>
+                        <div class="price-slider">
+                            <input type="range" min="0" max="500" value="500" id="price-range">
+                            <p>Price: $<span id="price-value">500</span></p>
+                        </div>
+                    </div>
+
+                    <div class="filter-group">
+                        <h4>Size</h4>
+                        <label><input type="checkbox" data-filter="size" value="xs"> XS</label>
+                        <label><input type="checkbox" data-filter="size" value="s"> S</label>
+                        <label><input type="checkbox" data-filter="size" value="m"> M</label>
+                        <label><input type="checkbox" data-filter="size" value="l"> L</label>
+                        <label><input type="checkbox" data-filter="size" value="xl"> XL</label>
+                        <label><input type="checkbox" data-filter="size" value="xxl"> XXL</label>
+                    </div>
+
+                    <div class="filter-group">
+                        <h4>Color</h4>
+                        <div class="color-options">
+                            <label><input type="checkbox" data-filter="color" value="black"> Black</label>
+                            <label><input type="checkbox" data-filter="color" value="white"> White</label>
+                            <label><input type="checkbox" data-filter="color" value="blue"> Blue</label>
+                            <label><input type="checkbox" data-filter="color" value="red"> Red</label>
+                            <label><input type="checkbox" data-filter="color" value="gray"> Gray</label>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-secondary w-100" id="clear-filters">Clear Filters</button>
+                </div>
+            </aside>
+
+            <!-- Main Shop Content -->
+            <section class="shop-content">
+                <!-- Sort Options -->
+                <div class="shop-header">
+                    <div class="sort-container">
+                        <label for="sort">Sort by:</label>
+                        <select id="sort">
+                            <option value="newest">Newest</option>
+                            <option value="price-low">Price: Low to High</option>
+                            <option value="price-high">Price: High to Low</option>
+                            <option value="popular">Most Popular</option>
+                            <option value="rating">Top Rated</option>
+                        </select>
+                    </div>
+                    <div class="view-options">
+                        <button class="view-btn active" data-view="grid">
+                            <i class="fas fa-th"></i>
+                        </button>
+                        <button class="view-btn" data-view="list">
+                            <i class="fas fa-list"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Products Grid -->
+                <div class="products-grid" id="shop-products">
+                    <!-- Products loaded dynamically -->
+                </div>
+
+                <!-- Pagination -->
+                <div class="pagination">
+                    <button class="pagination-btn prev" id="prev-page">Previous</button>
+                    <div class="pagination-numbers" id="pagination-numbers"></div>
+                    <button class="pagination-btn next" id="next-page">Next</button>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h4>About GGS Boys</h4>
+                    <p>Premium quality men's fashion and accessories for the modern gentleman.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <a href="#">Home</a>
+                    <a href="#">New Arrivals</a>
+                    <a href="#">Sale</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Customer Service</h4>
+                    <a href="#">Contact Us</a>
+                    <a href="#">Returns</a>
+                    <a href="#">Shipping</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <a href="#">Privacy</a>
+                    <a href="#">Terms</a>
+                    <a href="#">Cookie Policy</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 GGS Boys. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Product Detail Modal -->
+    <div class="modal" id="product-modal">
+        <div class="modal-content product-modal">
+            <span class="close">&times;</span>
+            <div class="product-detail">
+                <div class="product-images">
+                    <img id="modal-image" src="" alt="Product">
+                </div>
+                <div class="product-info">
+                    <h2 id="modal-title"></h2>
+                    <div class="rating">
+                        <span id="modal-rating"></span>
+                        <span id="modal-reviews"></span>
+                    </div>
+                    <p id="modal-price"></p>
+                    <p id="modal-description"></p>
+                    <form id="product-form">
+                        <div class="form-group">
+                            <label for="size">Size:</label>
+                            <select id="size" required>
+                                <option>Select Size</option>
+                                <option>XS</option>
+                                <option>S</option>
+                                <option>M</option>
+                                <option>L</option>
+                                <option>XL</option>
+                                <option>XXL</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="quantity">Quantity:</label>
+                            <input type="number" id="quantity" min="1" max="10" value="1">
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Add to Cart</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/api-config.js"></script>
+    <script src="js/products.js"></script>
+    <script src="js/shop.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GGS Boys - Premium Men's Fashion</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <div class="navbar-content">
+                    <div class="logo">
+                        <a href="index.html">
+                            <i class="fas fa-crown"></i> GGS BOYS
+                        </a>
+                    </div>
+                    <div class="nav-menu">
+                        <a href="index.html" class="nav-link active">Home</a>
+                        <a href="shop.html" class="nav-link">Shop</a>
+                    </div>
+                    <div class="nav-actions">
+                        <a href="cart.html" class="nav-icon" id="cart-icon" title="Shopping Cart">
+                            <i class="fas fa-shopping-bag"></i>
+                            <span class="cart-count">0</span>
+                        </a>
+                        <button class="hamburger" id="hamburger">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Premium Men's Fashion</h1>
+            <p>Discover the finest collection of men's clothing and accessories</p>
+            <a href="shop.html" class="btn btn-primary btn-lg">Shop Now</a>
+        </div>
+        <div class="hero-image">
+            <video autoplay muted loop class="hero-video">
+                <source src="assets/hero-video.mp4" type="video/mp4">
+                <img src="assets/hero-image.jpg" alt="Hero Banner">
+            </video>
+        </div>
+    </section>
+
+    <!-- Featured Categories -->
+    <section class="categories-section">
+        <div class="container">
+            <h2>Shop by Category</h2>
+            <div class="categories-grid">
+                <a href="shop.html?category=shirts" class="category-card">
+                    <div class="category-image">
+                        <i class="fas fa-shirt"></i>
+                    </div>
+                    <h3>Shirts</h3>
+                </a>
+                <a href="shop.html?category=pants" class="category-card">
+                    <div class="category-image">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <h3>Pants</h3>
+                </a>
+                <a href="shop.html?category=jackets" class="category-card">
+                    <div class="category-image">
+                        <i class="fas fa-vest"></i>
+                    </div>
+                    <h3>Jackets</h3>
+                </a>
+                <a href="shop.html?category=shoes" class="category-card">
+                    <div class="category-image">
+                        <i class="fas fa-shoe-prints"></i>
+                    </div>
+                    <h3>Shoes</h3>
+                </a>
+                <a href="shop.html?category=accessories" class="category-card">
+                    <div class="category-image">
+                        <i class="fas fa-ring"></i>
+                    </div>
+                    <h3>Accessories</h3>
+                </a>
+                <a href="shop.html?category=watches" class="category-card">
+                    <div class="category-image">
+                        <i class="fas fa-watch"></i>
+                    </div>
+                    <h3>Watches</h3>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section class="featured-section">
+        <div class="container">
+            <h2>Featured Products</h2>
+            <div class="products-grid" id="featured-products">
+                <!-- Products loaded dynamically -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Special Offer Banner -->
+    <section class="offer-banner">
+        <div class="container">
+            <h2>Special Offer</h2>
+            <p>Get 20% off your first purchase</p>
+            <button class="btn btn-secondary" id="subscribe-btn">Subscribe to Newsletter</button>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter-section">
+        <div class="container">
+            <div class="newsletter-content">
+                <h3>Subscribe to Our Newsletter</h3>
+                <p>Get the latest updates on new products and special offers</p>
+                <form class="newsletter-form" id="newsletter-form">
+                    <input type="email" placeholder="Enter your email" required>
+                    <button type="submit" class="btn btn-primary">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h4>About GGS Boys</h4>
+                    <p>Premium quality men's fashion and accessories for the modern gentleman.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <a href="#">Shop</a>
+                    <a href="#">New Arrivals</a>
+                    <a href="#">Sale</a>
+                    <a href="#">Best Sellers</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Customer Service</h4>
+                    <a href="#">Contact Us</a>
+                    <a href="#">Returns</a>
+                    <a href="#">Shipping Info</a>
+                    <a href="#">FAQ</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Cookie Policy</a>
+                    <a href="#">Disclaimer</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 GGS Boys. All rights reserved. | Premium Men's Fashion</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal for Newsletter Popup -->
+    <div class="modal" id="newsletter-modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3>Subscribe to Our Newsletter</h3>
+            <p>Get exclusive offers and updates</p>
+            <form class="modal-form">
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Your Email" required>
+                <button type="submit" class="btn btn-primary">Subscribe</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/api-config.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

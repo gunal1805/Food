@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="GGS Food Services - Compare food prices across Swiggy, Zomato, Blinkit, Zepto. Find the best deals near you!">
+    <meta name="keywords" content="GGS Food Services, food price comparison, delivery apps">
+    <title>GGS Food Services - Compare Prices & Save</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/food-comparison.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <div class="navbar-content">
+                    <div class="logo">
+                        <a href="ggs-landing.html" class="logo-link">
+                            <i class="fas fa-crown"></i> <strong>GGS</strong> <span>Food Services</span>
+                        </a>
+                    </div>
+                    <div class="nav-menu">
+                        <a href="ggs-landing.html" class="nav-link">Home</a>
+                        <a href="food-compare.html" class="nav-link active">Compare Prices</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Container -->
+    <main class="food-comparison-page">
+        
+        <!-- Location Section -->
+        <section class="location-section">
+            <div class="container">
+                <div class="location-card">
+                    <h2><i class="fas fa-map-marker-alt"></i> Your Location</h2>
+                    
+                    <div class="location-input-group">
+                        <div class="input-group">
+                            <input 
+                                type="text" 
+                                id="locationInput" 
+                                class="location-input" 
+                                placeholder="Enter your address or city"
+                                autocomplete="off"
+                            />
+                            <button id="geolocationBtn" class="btn btn-geolocation" title="Use my current location">
+                                <i class="fas fa-crosshairs"></i>
+                            </button>
+                        </div>
+                        <div id="locationSuggestions" class="location-suggestions" style="display: none;"></div>
+                    </div>
+
+                    <div id="currentLocation" class="current-location-display" style="display: none;">
+                        <div class="location-info">
+                            <span id="locationCity" class="location-city"></span>
+                            <span id="locationArea" class="location-area"></span>
+                        </div>
+                        <button id="changeLocationBtn" class="btn btn-text">Change</button>
+                    </div>
+
+                    <div id="locationError" class="error-message" style="display: none;"></div>
+                    <div id="locationLoading" class="loading-spinner" style="display: none;">
+                        <i class="fas fa-spinner fa-spin"></i> Getting your location...
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Search Section -->
+        <section class="search-section">
+            <div class="container">
+                <div class="search-card">
+                    <h2><i class="fas fa-search"></i> Search for Food or Groceries</h2>
+                    
+                    <form id="searchForm" class="search-form">
+                        <div class="search-input-group">
+                            <input 
+                                type="text" 
+                                id="searchInput" 
+                                class="search-input" 
+                                placeholder="Search for food, groceries, or restaurants..."
+                                autocomplete="off"
+                            />
+                            <button type="submit" class="btn btn-primary" id="searchBtn">
+                                <i class="fas fa-search"></i> Search
+                            </button>
+                        </div>
+
+                        <div class="filter-options">
+                            <label class="filter-checkbox">
+                                <input type="checkbox" name="category" value="food" checked />
+                                <span>Food & Restaurants</span>
+                            </label>
+                            <label class="filter-checkbox">
+                                <input type="checkbox" name="category" value="groceries" checked />
+                                <span>Groceries</span>
+                            </label>
+                        </div>
+                    </form>
+
+                    <div id="searchError" class="error-message" style="display: none;"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Offers Section -->
+        <section class="offers-section" id="offersSection" style="display: none;">
+            <div class="container">
+                <h2><i class="fas fa-tag"></i> Active Offers</h2>
+                <div id="offersContainer" class="offers-container"></div>
+            </div>
+        </section>
+
+        <!-- Results Section -->
+        <section class="results-section" id="resultsSection" style="display: none;">
+            <div class="container">
+                <div class="results-header">
+                    <h2>Results for "<span id="searchedQuery"></span>"</h2>
+                    <div class="results-controls">
+                        <select id="sortBy" class="sort-select">
+                            <option value="price">Sort by Price (Low to High)</option>
+                            <option value="price_desc">Sort by Price (High to Low)</option>
+                            <option value="delivery">Sort by Delivery Time</option>
+                            <option value="rating">Sort by Rating</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div id="resultsContainer" class="results-container">
+                    <!-- Results will be populated here -->
+                </div>
+
+                <div id="noResults" class="no-results" style="display: none;">
+                    <i class="fas fa-inbox"></i>
+                    <p>No results found. Try a different search.</p>
+                </div>
+
+                <div id="searchLoading" class="loading-spinner" style="display: none;">
+                    <i class="fas fa-spinner fa-spin"></i> Searching across all platforms...
+                </div>
+            </div>
+        </section>
+
+        <!-- Platforms Status Section -->
+        <section class="platforms-status" id="platformsStatus" style="display: none;">
+            <div class="container">
+                <h3>Available Platforms</h3>
+                <div id="platformsList" class="platforms-list"></div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Food Price Comparison. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/api-config.js"></script>
+    <script src="js/location-service.js"></script>
+    <script src="js/food-comparison.js"></script>
+</body>
+</html>

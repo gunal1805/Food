@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GGS Food Services - AI-Powered Food Comparison</title>
+    <link rel="stylesheet" href="css/food-comparison.css">
+    <style>
+        /* ML Features Styling */
+        .ml-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 30px 20px;
+            border-radius: 15px;
+            margin: 30px 0;
+            color: white;
+        }
+
+        .ml-section h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .ml-recommendations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .ml-recommendation-card {
+            background: white;
+            color: #333;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .ml-recommendation-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .ml-rank {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            display: inline-block;
+        }
+
+        .ml-score {
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        .ml-why {
+            font-size: 12px;
+            color: #666;
+            margin: 10px 0;
+        }
+
+        .ml-sort-buttons {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+
+        .btn-sort {
+            padding: 10px 20px;
+            border: 2px solid #667eea;
+            background: white;
+            color: #667eea;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .btn-sort:hover,
+        .btn-sort.active {
+            background: #667eea;
+            color: white;
+        }
+
+        .ml-diet-section {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            padding: 30px 20px;
+            border-radius: 15px;
+            margin: 30px 0;
+            color: white;
+        }
+
+        .ml-diet-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 15px;
+        }
+
+        .ml-diet-card {
+            background: white;
+            color: #333;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .ml-price-prediction {
+            background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .ml-price-prediction p {
+            margin: 10px 0;
+            font-size: 16px;
+        }
+
+        .suggestion {
+            background: rgba(255,255,255,0.2);
+            padding: 10px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .confidence {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        .diet-filter-section {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .diet-buttons {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .diet-btn {
+            padding: 10px 15px;
+            border: 2px solid #ddd;
+            background: white;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .diet-btn:hover,
+        .diet-btn.active {
+            border-color: #667eea;
+            background: #667eea;
+            color: white;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 20px;
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        .ml-stats {
+            background: #f5f5f5;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <h1>🍕 GGS Food Services</h1>
+                <p>AI-Powered Food Price Comparison</p>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- Search Section -->
+        <section class="search-section">
+            <h2>🔍 Find & Compare Food Prices</h2>
+            
+            <!-- Location -->
+            <div class="form-group">
+                <label for="location">📍 Your Location:</label>
+                <input 
+                    type="text" 
+                    id="location" 
+                    placeholder="Enter your address or allow location access"
+                    class="input-field"
+                />
+                <button id="geoBtn" class="btn-primary">📍 Use My Location</button>
+            </div>
+
+            <!-- Search -->
+            <div class="form-group">
+                <label for="searchInput">🔍 Search Food:</label>
+                <input 
+                    type="text" 
+                    id="searchInput" 
+                    placeholder="Pizza, Biryani, Burger, etc."
+                    class="input-field"
+                />
+                <button id="searchBtn" class="btn-primary">🔍 Search</button>
+            </div>
+
+            <!-- ML Sort Options -->
+            <div id="mlSortContainer" style="display:none;"></div>
+
+            <!-- Diet Filter -->
+            <div class="diet-filter-section" id="dietFilterSection" style="display:none;">
+                <h3>🍽️ Filter by Diet Preference</h3>
+                <div class="diet-buttons">
+                    <button class="diet-btn active" onclick="filterByDiet('balanced')">🥘 Balanced</button>
+                    <button class="diet-btn" onclick="filterByDiet('vegan')">🌱 Vegan</button>
+                    <button class="diet-btn" onclick="filterByDiet('protein')">💪 Protein</button>
+                    <button class="diet-btn" onclick="filterByDiet('light')">🥗 Light</button>
+                    <button class="diet-btn" onclick="filterByDiet('keto')">🥩 Keto</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ML Recommendations Section -->
+        <section id="mlRecommendationsSection" style="display:none;">
+            <div id="mlRecommendations"></div>
+        </section>
+
+        <!-- Diet Suggestions Section -->
+        <section id="dietSuggestionsSection" style="display:none;">
+            <div id="dietSuggestions"></div>
+        </section>
+
+        <!-- Price Prediction Section -->
+        <section id="pricePredictionSection" style="display:none;">
+            <div id="pricePrediction"></div>
+        </section>
+
+        <!-- Results Section -->
+        <section class="results-section">
+            <div id="resultsContainer" class="results-container"></div>
+        </section>
+
+        <!-- ML Stats -->
+        <section id="mlStatsSection" style="display:none;">
+            <div class="ml-stats">
+                <h3>📊 AI Insights</h3>
+                <div id="mlStatsContent"></div>
+            </div>
+        </section>
+
+        <!-- Loading Spinner -->
+        <div id="loading" class="loading" style="display:none;">
+            ⏳ AI is analyzing options... Please wait
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/api-config.js"></script>
+    <script src="js/location-service.js"></script>
+    <script src="js/ml-client.js"></script>
+    <script src="js/food-comparison.js"></script>
+    <script>
+        // Initialize ML features
+        let currentSortMethod = 'best';
+        let currentDiet = 'balanced';
+
+        // Enhanced search with ML
+        async function performEnhancedSearch() {
+            const searchTerm = document.getElementById('searchInput').value.trim();
+            const location = document.getElementById('location').value.trim();
+
+            if (!searchTerm) {
+                alert('Please enter a food name');
+                return;
+            }
+
+            document.getElementById('loading').style.display = 'block';
+
+            try {
+                // Original search
+                const response = await fetch(
+                    `${API_BASE_URL}/search?item=${encodeURIComponent(searchTerm)}&location=${encodeURIComponent(location)}`
+                );
+                const data = await response.json();
+
+                if (data.success && data.results.length > 0) {
+                    // Show ML sort options
+                    foodML.displaySortOptions('#mlSortContainer');
+                    document.getElementById('mlSortContainer').style.display = 'block';
+
+                    // Show diet filter
+                    document.getElementById('dietFilterSection').style.display = 'block';
+
+                    // Get and display ML recommendations
+                    const allFoods = data.results;
+                    const budget = parseInt(document.getElementById('location').dataset.budget) || 500;
+                    const recommendations = await foodML.getRecommendations(allFoods, budget);
+
+                    if (recommendations.length > 0) {
+                        foodML.displayRecommendations('#mlRecommendations', recommendations.slice(0, 3));
+                        document.getElementById('mlRecommendationsSection').style.display = 'block';
+                    }
+
+                    // Display sorted results
+                    const sorted = await foodML.smartSort(allFoods, currentSortMethod);
+                    displayResults(sorted);
+
+                    // Show stats
+                    showMLStats();
+                } else {
+                    alert('No food items found');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Error searching for food');
+            } finally {
+                document.getElementById('loading').style.display = 'none';
+            }
+        }
+
+        // Sort by ML method
+        async function sortByML(method) {
+            currentSortMethod = method;
+            const buttons = document.querySelectorAll('.btn-sort');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            await performEnhancedSearch();
+        }
+
+        // Filter by diet
+        async function filterByDiet(diet) {
+            currentDiet = diet;
+            const buttons = document.querySelectorAll('.diet-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            const searchTerm = document.getElementById('searchInput').value.trim();
+            if (!searchTerm) return;
+
+            try {
+                const response = await fetch(
+                    `${API_BASE_URL}/search?item=${encodeURIComponent(searchTerm)}`
+                );
+                const data = await response.json();
+
+                if (data.success) {
+                    const suggestions = await foodML.getDietSuggestions(data.results, diet);
+                    if (suggestions.length > 0) {
+                        foodML.displayDietSuggestions('#dietSuggestions', diet, suggestions);
+                        document.getElementById('dietSuggestionsSection').style.display = 'block';
+                    }
+                }
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        }
+
+        // Display results
+        function displayResults(foods) {
+            const container = document.getElementById('resultsContainer');
+            
+            if (foods.length === 0) {
+                container.innerHTML = '<p>No items found</p>';
+                return;
+            }
+
+            let html = '<div class="results-grid">';
+            foods.forEach(food => {
+                html += `
+                    <div class="result-card">
+                        <img src="${food.image_url || 'https://via.placeholder.com/200'}" alt="${food.name}" />
+                        <h3>${food.name}</h3>
+                        <p class="platform">${food.platform}</p>
+                        <p class="description">${food.description}</p>
+                        <div class="food-details">
+                            <span class="rating">⭐ ${food.rating || 'N/A'}</span>
+                            <span class="time">⏱️ ${food.preparationTime || 20}min</span>
+                        </div>
+                        <p class="price">₹${food.price}</p>
+                        <button class="btn-add" onclick="addToCart('${food.name}', ${food.price})">
+                            🛒 Add to Cart
+                        </button>
+                    </div>
+                `;
+            });
+            html += '</div>';
+            container.innerHTML = html;
+        }
+
+        // Show ML stats
+        async function showMLStats() {
+            try {
+                const stats = await foodML.getStats();
+                const statsHTML = `
+                    <p>📊 Top Categories: ${
+                        stats.topCategories.map(c => c.category).join(', ') || 'None'
+                    }</p>
+                `;
+                document.getElementById('mlStatsContent').innerHTML = statsHTML;
+                document.getElementById('mlStatsSection').style.display = 'block';
+            } catch (error) {
+                console.error('Error getting stats:', error);
+            }
+        }
+
+        // Event listeners
+        document.getElementById('searchBtn').addEventListener('click', performEnhancedSearch);
+        document.getElementById('searchInput').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') performEnhancedSearch();
+        });
+
+        // Auto-search from URL params
+        window.addEventListener('load', () => {
+            const params = new URLSearchParams(window.location.search);
+            const searchTerm = params.get('search');
+            if (searchTerm) {
+                document.getElementById('searchInput').value = searchTerm;
+                performEnhancedSearch();
+            }
+        });
+    </script>
+</body>
+</html>

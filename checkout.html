@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - GGS Boys</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <div class="navbar-content">
+                    <div class="logo">
+                        <a href="index.html"><i class="fas fa-crown"></i> GGS BOYS</a>
+                    </div>
+                    <div class="nav-menu">
+                        <a href="index.html" class="nav-link">Home</a>
+                        <a href="shop.html" class="nav-link">Shop</a>
+                    </div>
+                    <div class="nav-actions">
+                        <a href="cart.html" class="nav-icon" id="cart-icon" title="Shopping Cart">
+                            <i class="fas fa-shopping-bag"></i>
+                            <span class="cart-count">0</span>
+                        </a>
+                        <button class="hamburger" id="hamburger">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Checkout Page -->
+    <main class="checkout-main">
+        <div class="container">
+            <div class="checkout-container">
+                <!-- Progress Steps -->
+                <div class="checkout-steps">
+                    <div class="step active" data-step="1">
+                        <span>1</span>
+                        <p>Shipping</p>
+                    </div>
+                    <div class="step" data-step="2">
+                        <span>2</span>
+                        <p>Payment</p>
+                    </div>
+                    <div class="step" data-step="3">
+                        <span>3</span>
+                        <p>Review</p>
+                    </div>
+                </div>
+
+                <div class="checkout-content">
+                    <!-- Step 1: Shipping Information -->
+                    <section class="checkout-section" id="step-1">
+                        <h2>Shipping Address</h2>
+                        <form class="checkout-form" id="shipping-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="first-name">First Name *</label>
+                                    <input type="text" id="first-name" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="last-name">Last Name *</label>
+                                    <input type="text" id="last-name" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group full">
+                                <label for="email">Email *</label>
+                                <input type="email" id="email" required>
+                            </div>
+
+                            <div class="form-group full">
+                                <label for="address">Street Address *</label>
+                                <input type="text" id="address" required>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="city">City *</label>
+                                    <input type="text" id="city" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="state">State *</label>
+                                    <input type="text" id="state" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="zip">ZIP Code *</label>
+                                    <input type="text" id="zip" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group full">
+                                <label for="country">Country *</label>
+                                <select id="country" required>
+                                    <option>United States</option>
+                                    <option>Canada</option>
+                                    <option>United Kingdom</option>
+                                    <option>Other</option>
+                                </select>
+                            </div>
+
+                            <div class="shipping-options">
+                                <h3>Shipping Method</h3>
+                                <label>
+                                    <input type="radio" name="shipping" value="standard" checked>
+                                    <span>Standard Shipping (5-7 business days) - $10.00</span>
+                                </label>
+                                <label>
+                                    <input type="radio" name="shipping" value="express">
+                                    <span>Express Shipping (2-3 business days) - $25.00</span>
+                                </label>
+                                <label>
+                                    <input type="radio" name="shipping" value="overnight">
+                                    <span>Overnight Shipping (Next business day) - $50.00</span>
+                                </label>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary btn-lg">Continue to Payment</button>
+                        </form>
+                    </section>
+
+                    <!-- Step 2: Payment Information -->
+                    <section class="checkout-section" id="step-2" style="display:none;">
+                        <h2>Payment Information</h2>
+                        <form class="checkout-form" id="payment-form">
+                            <div class="payment-methods">
+                                <label>
+                                    <input type="radio" name="payment" value="card" checked>
+                                    <span><i class="fas fa-credit-card"></i> Credit Card</span>
+                                </label>
+                                <label>
+                                    <input type="radio" name="payment" value="paypal">
+                                    <span><i class="fab fa-paypal"></i> PayPal</span>
+                                </label>
+                                <label>
+                                    <input type="radio" name="payment" value="apple">
+                                    <span><i class="fab fa-apple"></i> Apple Pay</span>
+                                </label>
+                            </div>
+
+                            <div id="card-details">
+                                <div class="form-group full">
+                                    <label for="card-name">Cardholder Name *</label>
+                                    <input type="text" id="card-name" required>
+                                </div>
+
+                                <div class="form-group full">
+                                    <label for="card-number">Card Number *</label>
+                                    <input type="text" id="card-number" placeholder="1234 5678 9012 3456" required>
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="expiry">Expiry Date *</label>
+                                        <input type="text" id="expiry" placeholder="MM/YY" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="cvv">CVV *</label>
+                                        <input type="text" id="cvv" placeholder="123" required>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <label class="checkbox">
+                                <input type="checkbox" id="save-card">
+                                <span>Save this card for future purchases</span>
+                            </label>
+
+                            <div class="button-group">
+                                <button type="button" class="btn btn-outline" onclick="showStep(currentStep - 1)">Back</button>
+                                <button type="submit" class="btn btn-primary btn-lg">Review Order</button>
+                            </div>
+                        </form>
+                    </section>
+
+                    <!-- Step 3: Review Order -->
+                    <section class="checkout-section" id="step-3" style="display:none;">
+                        <h2>Review Your Order</h2>
+                        <div class="review-section">
+                            <h3>Shipping Address</h3>
+                            <div id="review-address"></div>
+
+                            <h3>Order Summary</h3>
+                            <div id="review-items"></div>
+
+                            <div class="order-total">
+                                <div><span>Subtotal:</span><span id="review-subtotal">$0.00</span></div>
+                                <div><span>Shipping:</span><span id="review-shipping">$0.00</span></div>
+                                <div><span>Tax:</span><span id="review-tax">$0.00</span></div>
+                                <div class="total"><span>Total:</span><span id="review-total">$0.00</span></div>
+                            </div>
+
+                            <label class="checkbox">
+                                <input type="checkbox" id="agree-terms" required>
+                                <span>I agree to the Terms of Service and Privacy Policy</span>
+                            </label>
+
+                            <div class="button-group">
+                                <button type="button" class="btn btn-outline" onclick="showStep(currentStep - 1)">Back</button>
+                                <button type="button" class="btn btn-primary btn-lg" id="place-order">Place Order</button>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <!-- Order Summary Sidebar -->
+                <aside class="checkout-summary">
+                    <h3>Order Summary</h3>
+                    <div id="checkout-items"></div>
+                    <div class="summary-total">
+                        <div><span>Total:</span><span id="summary-total">$0.00</span></div>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </main>
+
+    <!-- Success Modal -->
+    <div class="modal" id="success-modal">
+        <div class="modal-content success">
+            <div class="success-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h2>Order Placed Successfully!</h2>
+            <p id="order-number"></p>
+            <p>Thank you for your purchase. You will receive a confirmation email shortly.</p>
+            <a href="index.html" class="btn btn-primary">Back to Home</a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h4>About GGS Boys</h4>
+                    <p>Premium quality men's fashion and accessories.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <a href="#">Home</a>
+                    <a href="#">Shop</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Customer Service</h4>
+                    <a href="#">Contact</a>
+                    <a href="#">Returns</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <a href="#">Privacy</a>
+                    <a href="#">Terms</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 GGS Boys. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/api-config.js"></script>
+    <script src="js/products.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/checkout.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

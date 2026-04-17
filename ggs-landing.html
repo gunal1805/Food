@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="GGS Food Services - Compare food prices across Swiggy, Zomato, Blinkit, Zepto. Find the best deals near you!">
+    <meta name="keywords" content="GGS Food Services, food price comparison, delivery apps, Swiggy, Zomato, Blinkit, Zepto">
+    <meta name="author" content="GGS Boys">
+    <meta property="og:title" content="GGS Food Services - Best Food Price Comparison">
+    <meta property="og:description" content="Compare prices across all major food delivery and grocery apps">
+    <title>GGS Food Services - Compare & Save on Food Delivery</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/ggs-landing.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <div class="navbar-content">
+                    <div class="logo">
+                        <a href="ggs-landing.html" class="logo-link">
+                            <i class="fas fa-crown"></i> <strong>GGS</strong> <span>Food Services</span>
+                        </a>
+                    </div>
+                    <div class="nav-menu">
+                        <a href="ggs-landing.html" class="nav-link active">Home</a>
+                        <a href="food-compare.html" class="nav-link">Start Comparing</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-landing">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Welcome to <span class="highlight">GGS Food Services</span></h1>
+                    <p class="tagline">Find the Best Food Prices. Save Money. Order Smart.</p>
+                    <p class="description">Compare prices across Swiggy, Zomato, Blinkit, and Zepto all in one place</p>
+                    
+                    <div class="cta-buttons">
+                        <a href="food-compare.html" class="btn btn-primary btn-lg">
+                            <i class="fas fa-search"></i> Compare Prices Now
+                        </a>
+                        <a href="#features" class="btn btn-secondary btn-lg">
+                            <i class="fas fa-info-circle"></i> Learn More
+                        </a>
+                    </div>
+                </div>
+
+                <div class="hero-visual">
+                    <div class="platform-showcase">
+                        <div class="platform-item">
+                            <div class="platform-icon"><i class="fas fa-utensils"></i></div>
+                            <p>Swiggy</p>
+                        </div>
+                        <div class="platform-item">
+                            <div class="platform-icon"><i class="fas fa-bowl-food"></i></div>
+                            <p>Zomato</p>
+                        </div>
+                        <div class="platform-item">
+                            <div class="platform-icon"><i class="fas fa-shopping-bag"></i></div>
+                            <p>Blinkit</p>
+                        </div>
+                        <div class="platform-item">
+                            <div class="platform-icon"><i class="fas fa-rocket"></i></div>
+                            <p>Zepto</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Search Section -->
+    <section class="quick-search">
+        <div class="container">
+            <h2>Quick Search</h2>
+            <p>Can't wait? Try our quick search:</p>
+            
+            <div class="quick-search-form">
+                <input type="text" id="quickSearch" class="search-input" placeholder="e.g., Pizza, Biryani, Groceries..." />
+                <a href="#" class="btn btn-primary" onclick="quickSearch(); return false;">
+                    <i class="fas fa-search"></i> Search
+                </a>
+            </div>
+
+            <div class="popular-searches">
+                <p><strong>Popular searches:</strong></p>
+                <div class="search-tags">
+                    <a href="#" onclick="goToSearch('Pizza')">Pizza</a>
+                    <a href="#" onclick="goToSearch('Biryani')">Biryani</a>
+                    <a href="#" onclick="goToSearch('Groceries')">Groceries</a>
+                    <a href="#" onclick="goToSearch('Samosa')">Samosa</a>
+                    <a href="#" onclick="goToSearch('Milk')">Milk</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <h2>Why Choose <strong>GGS Food Services</strong>?</h2>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-compare"></i>
+                    </div>
+                    <h3>Compare Instantly</h3>
+                    <p>See prices from all major platforms in seconds</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3>Location-Based</h3>
+                    <p>Get delivery times and charges for your area</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-piggy-bank"></i>
+                    </div>
+                    <h3>Save Money</h3>
+                    <p>Find the cheapest option every single time</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-tag"></i>
+                    </div>
+                    <h3>View All Offers</h3>
+                    <p>See active deals from all platforms at once</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Mobile Ready</h3>
+                    <p>Works perfectly on all devices</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-link"></i>
+                    </div>
+                    <h3>Direct Links</h3>
+                    <p>One-click redirect to your chosen app</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Platforms Section -->
+    <section class="supported-platforms">
+        <div class="container">
+            <h2>Supported Platforms</h2>
+            <p>We compare prices from these leading services:</p>
+            
+            <div class="platforms-comparison">
+                <div class="platform">
+                    <div class="platform-header">
+                        <i class="fas fa-utensils"></i>
+                        <h3>Swiggy</h3>
+                    </div>
+                    <p>Food Delivery</p>
+                    <ul>
+                        <li>✓ Restaurants</li>
+                        <li>✓ Cloud Kitchens</li>
+                        <li>✓ Quick Commerce</li>
+                    </ul>
+                </div>
+
+                <div class="platform">
+                    <div class="platform-header">
+                        <i class="fas fa-bowl-food"></i>
+                        <h3>Zomato</h3>
+                    </div>
+                    <p>Food Delivery</p>
+                    <ul>
+                        <li>✓ Restaurants</li>
+                        <li>✓ Cloud Kitchens</li>
+                        <li>✓ Dining Offers</li>
+                    </ul>
+                </div>
+
+                <div class="platform">
+                    <div class="platform-header">
+                        <i class="fas fa-shopping-bag"></i>
+                        <h3>Blinkit</h3>
+                    </div>
+                    <p>Grocery Delivery</p>
+                    <ul>
+                        <li>✓ Instant Delivery</li>
+                        <li>✓ Groceries</li>
+                        <li>✓ Daily Essentials</li>
+                    </ul>
+                </div>
+
+                <div class="platform">
+                    <div class="platform-header">
+                        <i class="fas fa-rocket"></i>
+                        <h3>Zepto</h3>
+                    </div>
+                    <p>Grocery Delivery</p>
+                    <ul>
+                        <li>✓ Ultra-Fast Delivery</li>
+                        <li>✓ Groceries</li>
+                        <li>✓ Daily Needs</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works">
+        <div class="container">
+            <h2>How It Works</h2>
+            
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Set Location</h3>
+                    <p>Enter your address or use GPS</p>
+                </div>
+
+                <div class="arrow">
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Search</h3>
+                    <p>Type the food or item you want</p>
+                </div>
+
+                <div class="arrow">
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Compare</h3>
+                    <p>View prices from all platforms</p>
+                </div>
+
+                <div class="arrow">
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>Order</h3>
+                    <p>Click and order from best option</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="final-cta">
+        <div class="container">
+            <h2>Ready to Save Money?</h2>
+            <p>Start comparing food prices now with GGS Food Services</p>
+            <a href="food-compare.html" class="btn btn-primary btn-lg">
+                <i class="fas fa-search"></i> Open GGS Food Services
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4><i class="fas fa-crown"></i> GGS Food Services</h4>
+                    <p>Smart food shopping, smart savings</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="ggs-landing.html">Home</a></li>
+                        <li><a href="food-compare.html">Compare Prices</a></li>
+                        <li><a href="#">About</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p>Email: info@ggsfoodservices.com</p>
+                    <p>Support: 24/7</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 GGS Food Services. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Quick search functionality
+        function quickSearch() {
+            const query = document.getElementById('quickSearch').value.trim();
+            if (query) {
+                goToSearch(query);
+            }
+        }
+
+        function goToSearch(query) {
+            // Redirect to food comparison page with search query
+            window.location.href = `food-compare.html?search=${encodeURIComponent(query)}`;
+        }
+
+        // Allow Enter key to search
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('quickSearch');
+            if (searchInput) {
+                searchInput.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        quickSearch();
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+{
+  "name": "ggs-boys-website",
+  "version": "1.0.0",
+  "description": "GGS Food Services - Food Price Comparison Website",
+  "main": "server.js",
+  "scripts": {
+    "start": "cd backend && npm start",
+    "install-all": "cd backend && npm install",
+    "dev": "cd backend && npm start"
+  },
+  "keywords": [
+    "food comparison",
+    "price comparison",
+    "swiggy",
+    "zomato",
+    "blinkit",
+    "zepto"
+  ],
+  "author": "GGS Boys Team",
+  "license": "MIT",
+  "engines": {
+    "node": "14.x || 16.x || 18.x || 20.x || 25.x"
+  }
+}
