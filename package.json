@@ -4,9 +4,9 @@
   "description": "GGS Food Services - Food Price Comparison Website",
   "main": "server.js",
   "scripts": {
-    "start": "cd backend && npm start",
+    "start": "node backend/server.js",
     "install-all": "cd backend && npm install",
-    "dev": "cd backend && npm start"
+    "dev": "node backend/server.js"
   },
   "keywords": [
     "food comparison",
@@ -18,6 +18,13 @@
   ],
   "author": "GGS Boys Team",
   "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "axios": "^1.4.0",
+    "open": "^9.1.0"
+  },
   "engines": {
     "node": "14.x || 16.x || 18.x || 20.x || 25.x"
   }
