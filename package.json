@@ -4,7 +4,7 @@
   "description": "GGS Food Services - Food Price Comparison Website",
   "main": "server.js",
   "scripts": {
-    "start": "cd backend && npm start",
+    "start": "cd backend && npm install && npm start",
     "install-all": "cd backend && npm install",
     "postinstall": "cd backend && npm install",
     "dev": "cd backend && npm start"
